@@ -1,0 +1,31 @@
+.c-intro {
+    margin: 5em;
+    &__service{
+        width: 100%;
+        height: 100%;
+        margin-top: 1.5rem;
+        &__image{
+            width:100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        &__info {
+            margin-top: 1rem;
+        }
+        &__button{
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.0)
+        }
+
+    }
+
+    height: auto;
+    &__text {
+
+        text-align: center;
+        
+        padding: em;
+    }
+
+   
+}

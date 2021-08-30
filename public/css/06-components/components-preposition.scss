@@ -1,0 +1,32 @@
+.c-preposition {
+    margin: 2em;
+    &__image-container{
+        width:100%;
+        height: 30em;
+        padding-right: 2em;
+        &__image{
+           background-position: 50%;
+            object-fit: cover;
+            width:100%;
+            height:100%;
+        }
+    }
+
+    &__text-container{
+        padding: 0;
+        padding-left: 2rem;
+        &__secondary-text{
+            margin-top: 1em;
+            
+        }
+        &__itemList{
+            margin-top: 1em;
+            padding-left:4em;
+            &__item{
+                margin-top: 0.5em;
+                font-size:1.333rem;
+                font-weight:bold; 
+            }
+        }
+    }
+}

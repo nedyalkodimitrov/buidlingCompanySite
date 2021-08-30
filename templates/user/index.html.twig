@@ -1,0 +1,169 @@
+{% extends 'user/base.html.twig' %}
+{% block stylesheets %}
+        {{ parent() }}
+        <link href="{{asset("css/06-components/components-slider.css")}}" rel="stylesheet">
+        <link href="{{asset("css/06-components/components-header.css")}}" rel="stylesheet">
+        <link href="{{asset("css/06-components/components-intro.css")}}" rel="stylesheet">
+        <link href="{{asset("css/06-components/components-how.css")}}" rel="stylesheet">
+        <link href="{{asset("css/06-components/components-preposition.css")}}" rel="stylesheet">
+        <link href="{{asset("css/06-components/components-form.css")}}" rel="stylesheet">
+       
+{% endblock %}
+
+{% block javascripts %}
+          <script src="{{asset("js/components/components-slider.js")}}"></script>
+{% endblock %}
+
+
+{% block body %}
+     {# <main class="main">
+        <div class="wrapper">
+            <div class="slider-block">
+                <div class="slider" data-effect="fade">
+                    <div class="slider-item">
+                        <div class="slider-item__content">
+                            <h6 class="slider-item__title">Lorem, ipsum dolor.</h6>
+                            <p class="slider-item__description">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium accusamus saepe.
+                            </p>
+                        </div>
+                        <img class="slider-item__image" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/image-1.jpeg" alt="">
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-item__content">
+                            <h6 class="slider-item__title">Lorem, ipsum.</h6>
+                            <p class="slider-item__description">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium.
+                            </p>
+                        </div>
+                        <img class="slider-item__image" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/image-2.jpeg" alt="">
+
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-item__content">
+                            <h6 class="slider-item__title">Lorem, ipsum dolor.</h6>
+                            <p class="slider-item__description">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium accusamus.
+                            </p>
+                        </div>
+                        <img class="slider-item__image" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/image-3.jpeg" alt="">
+
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-item__content">
+                            <h6 class="slider-item__title">Lorem, ipsum.</h6>
+                            <p class="slider-item__description">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium.
+                            </p>
+                        </div>
+                        <img class="slider-item__image" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/image-4.jpeg" alt="">
+
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-item__content">
+                            <h6 class="slider-item__title">Lorem, ipsum dolor.</h6>
+                            <p class="slider-item__description">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium accusamus saepe.
+                            </p>
+                        </div>
+                        <img class="slider-item__image" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/image-5.jpeg" alt="">
+
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-item__content">
+                            <h6 class="slider-item__title">Lorem, ipsum.</h6>
+                            <p class="slider-item__description">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium accusamus.
+                            </p>
+                        </div>
+                        <img class="slider-item__image" src="https://yildirimzlm.s3.us-east-2.amazonaws.com/image-6.jpeg" alt="">
+
+                    </div>
+                </div>
+                <div class="slider-control">
+                    <div class="slider-control-prev">
+                        <i class="fas fa-angle-left"></i>
+                    </div>
+                    <div class="slider-control-next">
+                        <i class="fas fa-angle-right"></i>
+                    </div>
+                </div>
+                <div class="pagination"></div>
+            </div>
+        </div>
+    </main> #}
+
+    <header class="col-12 row c-header">
+        <div class="c-header__info-container col-5">
+            <h1 class="c-header__info-container__primary-text">Ние превръщаме вашите мечти в реалност!</h1>
+            <h5 class="c-header__info-container__secondary-text">От 10 години предоставяме качествени ремонти дейностти в областта на Разград </h5>
+            <button class="o-button c-header__info-container__button"><h5>Свържете се с нас</h5> </button>
+        </div>
+        <div class="c-header__image-container col-7">
+            <img src="{{asset("images/coverhouse.jpg")}}" class="" alt="">
+        </div>  
+    </header>
+
+    <div class="c-intro row">
+        <div class="col-10 mx-auto text-center"><h3>Какво правим </h3></div>
+        <div class="col-4 c-intro__service">
+                <img src="{{asset("images/church.jpg")}}" class="c-intro__service__image" alt="">
+                <h5 class="c-intro__service__info">Вътрешен и външне ремонт на стари църкви, изграждане на пътеки и куполи </h5>
+        </div>
+         <div class="col-4 c-intro__service">
+                <img src="{{asset("images/roof.jpg")}}" class="c-intro__service__image" alt="">
+                <h5 class="c-intro__service__info">Изграждане на покриви по поръчка и спиране на течове на вече съществуващи  </h5>
+        </div>
+         <div class="col-4 c-intro__service">
+                <img src="{{asset("images/gardenHouse.jpg")}}" class="c-intro__service__image" alt="">
+                <h5 class="c-intro__service__info">Вътрешен и външен ремонт на сгради, офиси, къщи, градини, тераси  </h5>
+        </div>
+        <a href="" class=" col-12 text-center mt-1 mx-auto">Вижте Нашите Проекти</a>
+    </div>
+
+    <div class="c-how">
+        <img src="{{asset("images/workers.jpg")}}" class="c-how__coverPhoto" alt="">
+       
+        <div class="c-how__text">
+            <div class="col-12 text-center">
+            <h3 class="mt-3">Как протича процедурата </h3></div>
+            <h5 class="my-5">   
+                1. С нашия високо клалифициран екип от мъже, които искат да продължават да се развиват с всеки един проект, идваме на място и обсъждаме вашите изисквания, правим план за реализация и избор на материали. <br>2. Ние се захващаме за работа, а вие сте спокойни. <br>3. След края на работа ние събираме отпадъка и инструментите, а вие оставате удовлетворение от получената стойност.
+                 
+            </h5> 
+
+         
+
+        </div>
+    </div>
+
+    <div  class="col-10 row mx-auto c-preposition justify-content-between">
+        <div class="col-7 p-0 pr-2 c-preposition__image-container">
+             <img src="{{asset("images/smilingman.jpg")}}" class="c-preposition__image-container__image" alt="">
+        </div >
+        <div class="col-5 c-preposition__text-container">
+            <h3 class=" c-preposition__text-container__primary-text">Защо да ни изберете</h3>
+            <h5 class=" c-preposition__text-container__secondary-text">Когато изберете да работите с нас вие получавате: </h5>
+            <ul class=" c-preposition__text-container__itemList">
+                <li class=" c-preposition__text-container__itemList__item">Качесвено сврършена работа</li>
+                <li class=" c-preposition__text-container__itemList__item">Удовлетворение от резултата</li>
+                <li class=" c-preposition__text-container__itemList__item">Спокойствие </li>
+                <li class=" c-preposition__text-container__itemList__item">Ясен план за ремонта</li>
+                <li class=" c-preposition__text-container__itemList__item">3 месеца безплатна поддръжка</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="c-form--red c-form--red">
+       <div class="col-12 mx-auto text-center c-form__text  c-form--red__text"><h3>Свържете се с нас </h3></div>
+        <input type="text" name="name"  class="c-form__input" placeholder="Вашето име е">
+        <input type="text" name="email" class="c-form__input" placeholder="Вашият емейл е">
+        <input type="text" name="phone" class="c-form__input" placeholder="Вашият телефон е">
+        <textarea  name="textarea" class="c-form__textarea " placeholder="Вашето съобщение..." ></textarea>
+        <button class="o-button c-form__send-button c-form--red__send-button">Изпрати</button>
+        
+
+    </div>
+   
+
+{% endblock %}

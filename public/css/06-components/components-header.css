@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+.c-header {
+  padding: 0;
+  margin: 0;
+}
+
+.c-header__info-container {
+  background-color: #BB0504;
+}
+
+.c-header__info-container__secondary-text, .c-header__info-container__primary-text {
+  padding: 0.3rem;
+  color: white;
+  margin: 0;
+  margin-top: 1.5rem;
+}
+
+.c-header__info-container__button {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background: rgba(255, 255, 255, 0);
+  border: 1px solid white;
+  color: white;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.c-header__info-container__button:hover {
+  background: white;
+  color: black;
+}
+
+.c-header__image-container {
+  padding: 0;
+  margin: 0;
+}
+
+.c-header__image-container img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  max-width: 100%;
+  height: 100%;
+}
+/*# sourceMappingURL=components-header.css.map */

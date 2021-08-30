@@ -1,0 +1,40 @@
+{% extends 'user/base.html.twig' %}
+{% block stylesheets %}
+        {{ parent() }}
+
+        <link href="{{asset("css/06-components/components-card.css")}}" rel="stylesheet">
+                <link href="{{asset("css/06-components/components-form.css")}}" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+
+
+{% block body %}
+    <div class="col-8 mx-auto mt-3 row">
+        <div class="col-6">
+            <h3>Свържете се с нас<h3>
+            <h5 class="mt-3">Ако имате интерес към нас, се свържете с нас посредством посечения телефонен номер или формата за запитваниея.</h5>
+        </div>
+        <div class=" col-6">
+            <h3>Контакти<h3>
+            <div class="col-12 mt-3"> 
+                <div class=" p-0 "><h5>Център , Разград </h5></div>
+                <div class=" p-0 "><h5>089 456 5896</h5></div>
+                <div class=" p-0 "><h5>email@gmail.com </h5></div>
+            </div>
+        </div>
+        <div class="c-form">
+            <div class="col-12 mx-auto text-center c-form__text"><h3>Свържете се с нас </h3></div>
+            <input type="text" name="name"  class="c-form__input" placeholder="Вашето име е">
+            <input type="text" name="email" class="c-form__input" placeholder="Вашият емейл е">
+            <input type="text" name="phone" class="c-form__input" placeholder="Вашият телефон е">
+            <textarea  name="textarea" class="c-form__textarea" placeholder="Вашето съобщение..." ></textarea>
+            <button class="o-button c-form__send-button">Изпрати</button>
+         </div>
+        
+    </div>
+    
+
+{% endblock %}
