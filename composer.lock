@@ -3604,16 +3604,16 @@
         },
         {
             "name": "symfony/form",
-            "version": "v4.4.27",
+            "version": "v4.4.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/form.git",
-                "reference": "9179357ade083469ecd96da1f07cf4c2c5a54829"
+                "reference": "361a133fc451966277b2242990c0009f6cfdf3e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/form/zipball/9179357ade083469ecd96da1f07cf4c2c5a54829",
-                "reference": "9179357ade083469ecd96da1f07cf4c2c5a54829",
+                "url": "https://api.github.com/repos/symfony/form/zipball/361a133fc451966277b2242990c0009f6cfdf3e0",
+                "reference": "361a133fc451966277b2242990c0009f6cfdf3e0",
                 "shasum": ""
             },
             "require": {
@@ -3682,7 +3682,7 @@
             "description": "Allows to easily create, process and reuse HTML forms",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/form/tree/v4.4.27"
+                "source": "https://github.com/symfony/form/tree/v4.4.30"
             },
             "funding": [
                 {
@@ -3698,7 +3698,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-23T15:41:52+00:00"
+            "time": "2021-08-20T06:41:23+00:00"
         },
         {
             "name": "symfony/framework-bundle",

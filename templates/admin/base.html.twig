@@ -5,26 +5,12 @@
 {% endblock %}
 
 {% block navbarElements %}
-                <li class="nav-item   c-navbar__elementsContainer__element c-navbar__elementsContainer__element--active ">
-                  <a class="nav-link" href="{{ path('home') }}">Начало <span class="sr-only">(current)</span></a>
+             
+               <li class="nav-item   c-navbar__elementsContainer__element c-navbar__elementsContainer__element--active ">
+                  <a class="nav-link" href="{{ path('home') }}">Добавяне на проект  <span class="sr-only">(current)</span></a>
                 </li>
-              
-                <li class="nav-item dropdown c-navbar__elementsContainer__element">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Проекти
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Къщи</a>
-                    <a class="dropdown-item" href="#">Апартаменти</a>
-                    {# <div class="dropdown-divider">Churches</div> #}
-                    <a class="dropdown-item" href="#">Църкви</a>
-                    <a class="dropdown-item" href="#">Покриви</a>
-                  </div>
-                </li >
-                  <li class="nav-item c-navbar__elementsContainer__element ">
-                  <a class="nav-link" href="#">За нас</a>
-                </li>
+               
                 <li class="nav-item c-navbar__elementsContainer__element ">
-                  <a class="nav-link" href="{{ path('contactUs') }}">Контакти</a>
+                  <a class="nav-link" href="{{ path('contactUs') }}">Съобщения</a>
                 </li>
 {% endblock %}

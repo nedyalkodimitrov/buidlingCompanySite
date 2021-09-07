@@ -1,0 +1,73 @@
+{% extends 'admin/base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{asset("css/06-components/components-card.css")}}" rel="stylesheet">
+    <link href="{{asset("css/06-components/components-add-project.css")}}" rel="stylesheet">
+    <link href="{{asset("css/06-components/components-project-images.css")}}" rel="stylesheet">
+    <link href="{{asset("css/06-components/components-textarea.css")}}" rel="stylesheet">
+    <link href="{{asset("css/07-utilities/utilities-admin-intro.css")}}" rel="stylesheet">
+{% endblock %}
+{% block title %}Hello AdminController!{% endblock %}
+
+
+
+{% block body %}
+    <div class="col-12 u-admin-intro p-0 m-0 justify-content-center row">
+        <h3 class="text-center col-12 m-0 u-admin-intro__text">{{ project.location }} | {{ project.projectType }}</h3>
+    </div>
+    <div class="c-project-images">
+        <h3 class="text-center col-12 mt-3">Начална снимка </h3>
+        <div class="c-project-images__profileImage-holder">
+            <img src="{{ asset("projects/"~project.profileImage) }}" alt="">
+        </div>
+
+        <div class="c-project-images__addImages-holder justify-content-center col-11 p-0 mx-auto row">
+            <h3 class="text-center col-12 mt-3">Снимките на вашият обект  </h3>
+            {% for i in 0..1 %}
+                <div class="col-11 col-md-6 col-lg-4 p-0 mt-5">
+                    <div class="c-project-images__addImages-holder__image-holder col-11 mx-auto">
+                        <img src="{{ asset("projects/"~project.profileImage) }}" alt="">
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="col-4 p-0 mt-5">
+                <div class="c-project-images__addImages-holder__add-button col-11 mx-auto">
+                    <i class="fas fa-plus"></i>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="c-textarea-container col-11 mx-auto">
+        <h3 class="col-12 text-center mb-4">Дайте информация относно обекта</h3>
+        <textarea name="" id="" >{{ project.information }}</textarea>
+    </div>
+
+    <div class="c-textarea-container col-11 mx-auto">
+        <h3 class="col-12 text-center ">Какви промени сте направили по обекта</h3>
+        <h5 class="col-12 text-center mb-4">Разделете промените със интервал или запетая</h5>
+        <textarea name="" id="" > {{ project.changes }}</textarea>
+    </div>
+
+    <div class="col-11 row text-center justify-content-center">
+        <h3 class="col-12 text-center ">Срок на изпълнение</h3>
+        <h5 class="mr-2"> От: {{ project.startDate }}</h5>
+        <h5>|</h5>
+        <h5 class="ml-2">До: {{ project.endDate }}</h5>
+    </div>
+
+    <div class="c-admin-project-buttons">
+
+    </div>
+
+
+    <script src="{{asset("js/animation/animation-hidden-content.js")}}"></script>
+
+{% endblock %}
+
+
+
+
+

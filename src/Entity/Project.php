@@ -22,11 +22,18 @@ class Project
         return $this->id;
     }
 
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="ProjectType" )
+     * @ORM\JoinColumn(name="project_type", referencedColumnName="id")
+     */
+    public $projectType;
+
 
      /**
      * @ORM\Column(type="string")
      */
-    private $location;
+    public $location;
 
     /**
      * @ORM\Column(type="string")
@@ -39,14 +46,20 @@ class Project
     private $endDate;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable="true")
      */
     private $information;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable="true")
      */
     private $changes;
+
+    /**
+         * @ORM\Column(type="string")
+     */
+    private $profileImage;
+
 
 
     /**
@@ -148,4 +161,54 @@ class Project
 
         return $this;
     }
+
+
+
+    /**
+     * Get the value of projectType
+     */ 
+    public function getProjectType()
+    {
+        return $this->projectType;
+    }
+
+    /**
+     * Set the value of projectType
+     *
+     * @return  self
+     */ 
+    public function setProjectType($projectType)
+    {
+        $this->projectType = $projectType;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of profileImage
+     */ 
+    public function getProfileImage()
+    {
+        return $this->profileImage;
+    }
+
+    /**
+     * Set the value of profileImage
+     *
+     * @return  self
+     */ 
+    public function setProfileImage($profileImage)
+    {
+        $this->profileImage = $profileImage;
+
+        return $this;
+    }
+
+    public  function  __toString()
+    {
+        
+
+        return "asdsad'";
+    }
+
 }

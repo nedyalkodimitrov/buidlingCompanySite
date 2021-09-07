@@ -1,20 +1,113 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'admin/base.html.twig' %}
+{% block stylesheets %}
+        {{ parent() }}
+        <link href="{{asset("css/06-components/components-card.css")}}" rel="stylesheet">
+        <link href="{{asset("css/06-components/components-add-project.css")}}" rel="stylesheet">
+{% endblock %}
 {% block title %}Hello AdminController!{% endblock %}
 
+
+
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    
+    <div class="col-11 mx-auto row mt-4">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        {% for type in projectTypes %}
+            <div class="col-12 text-center mt-4 mb-2"><h3>{{ type }}</h3></div>
+            <hr class="col-9 mx-auto">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Develpment/Languages/PHP/Frameworks/Symfony/buildingCompanyManager/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Develpment/Languages/PHP/Frameworks/Symfony/buildingCompanyManager/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-    </ul>
+            {% set projectCointer = 0 %}
+
+            {% for project in projects %}
+                {% if project.projectType.Name == type %}
+                    <div class="c-card col-4 ">
+                        <a href="">
+                            <div class="c-card__image-container">
+                                <img src="{{asset("images/church.jpg")}}" class="c-card__image-container__image" alt="">
+
+                                <div class="c-card__image-container__location">
+                                    <h6>{{project.location }} </h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% set projectCointer = projectCointer + 1 %}
+                {% endif %}
+
+
+            {% endfor %}
+
+            {% if projectCointer == 0 %}
+                <div class="col-12 text-center"><h5>Нямате добавени проекти</h5></div>
+            {% endif %}
+
+        {% endfor %}
+
 </div>
+
+<div class="c-add-project">
+    <div class="c-add-project__button-container">
+        <button class="c-add-project__button-container__button"><i class="fa fa-plus"></i></button>
+    </div>
+    <div class="c-add-project__content-container">
+        <div class="c-add-project__content-container__content">
+
+            <h2 class="c-add-project__content-container__content__text">Добавяне на проект </h2>
+            {{ form_start(form) }}
+            <div class="c-add-project__content-container__content__imageInput-holder">
+                <label for="project_profileImage" class="c-add-project__content-container__content__imageInput-holder__imageIcon"><i class="fa fa-camera"></i></label>
+{#                <input type="file" id="image" name="image" class="c-add-project__content-container__content__imageInput-holder__imageInput">#}
+                {{ form_widget(form.profileImage, {'attr': {'class': 'c-add-project__content-container__content__imageInput-holder__imageInput'}}) }}
+            </div>
+            <div class="c-add-project__content-container__content__input-holder">
+                <label for="project_location"><h5>Локация</h5> </label>
+                {{ form_widget(form.location, {'attr': {'placeholder': 'Къде се намира обекта'}}) }}
+
+            </div>
+            
+          
+            
+            <div class="c-add-project__content-container__content__input-holder">
+                <label for="project_startDate"><h5>Начало</h5> </label>
+                {{ form_widget(form.startDate, {'attr': {'placeholder': 'Start Time'}}) }}
+            </div>
+
+            <div class="c-add-project__content-container__content__input-holder">
+                <label for="project_endDate"><h5>Край </h5></label>
+                {{ form_widget(form.endDate, {'attr': {'placeholder': 'End time'}}) }}
+            </div>
+            <div class="c-add-project__content-container__content__input-holder">
+                <label for="project_endDate"><h5>Тип на проекта</h5></label>
+                {{ form_widget(form.projectType, {'attr': {'placeholder': 'End time'}}) }}
+            </div>
+            <i class="c-add-project__content-container__content__close-button fa fa-times  "> </i>
+            {{ form_widget(form.save) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+
+</div>
+
+    {{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="row">
+        <div class="col">
+            {{ form_row(form.location) }}
+        </div>
+        <div class="col-12" id="some-custom-id">
+            {{ form_row(form.save) }}
+        </div>
+    </div>
+    {{ form_end(form) }}
+<script src="{{asset("js/animation/animation-hidden-content.js")}}"></script>
+
 {% endblock %}
+
+
+
+
+     

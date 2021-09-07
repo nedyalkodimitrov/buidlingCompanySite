@@ -17,6 +17,9 @@ class ProjectType
      */
     private $id;
 
+    
+
+
      /**
      * @ORM\Column(type="string")
      */
@@ -47,5 +50,9 @@ class ProjectType
         $this->name = $name;
 
         return $this;
+    }
+
+    public function __toString(){
+        return $this->name;
     }
 }
