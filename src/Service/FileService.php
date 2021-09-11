@@ -41,9 +41,9 @@ class FileService
     }
 
 
-    private function generateUniqueFileName()
-    {
-        return md5(uniqid());
-    }
+        private function generateUniqueFileName()
+        {
+            return md5(uniqid());
+        }
 
 }

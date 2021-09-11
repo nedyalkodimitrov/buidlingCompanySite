@@ -1,4 +1,5 @@
 .c-project-images__profileImage-holder {
+  position: relative;
   width: 15em;
   height: 15em;
   text-align: center;
@@ -8,6 +9,31 @@
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 1px 1px 10px gray;
+}
+.c-project-images__profileImage-holder input {
+  display: none;
+}
+.c-project-images__profileImage-holder__afterEffect {
+  transition: 0.35s;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background-color: #8B0052;
+  opacity: 0;
+}
+.c-project-images__profileImage-holder__afterEffect i {
+  position: relative;
+  top: 50%;
+  transform: translate(0%, -50%);
+  font-size: 3.5em;
+  color: white;
+}
+.c-project-images__profileImage-holder__afterEffect:hover {
+  opacity: 1;
 }
 .c-project-images__profileImage-holder img {
   width: 100%;
@@ -49,6 +75,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 3em;
+}
+.c-project-images__addImages-holder__add-button input {
+  display: none;
 }
 
 /*# sourceMappingURL=components-project-images.css.map */

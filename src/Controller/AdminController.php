@@ -2,15 +2,22 @@
 
 namespace App\Controller;
 
+use App\Entity\Image;
 use App\Entity\Project;
+use App\Form\ImageType;
 use App\Form\ProjectType;
+use App\Repository\ImageRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\ProjectTypeRepository;
 use App\Service\FileService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 class AdminController extends AbstractController
 {
@@ -62,13 +69,54 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/project/{id}", name="project")
      */
-    public function project($id, ProjectRepository $projectRepository, ProjectTypeRepository $projectTypeRepository, Request $request, FileService $fileService): Response
+    public function project($id,ImageRepository $imageRepository, ProjectRepository $projectRepository, ProjectTypeRepository $projectTypeRepository, Request $request, FileService $fileService): Response
     {
+
         $project = $projectRepository->find(intval($id));
+
+        $projectImages = $imageRepository->findBy(["project" => $id]);
+        $readyImages = [];
+
+        foreach ($projectImages as $image){
+            $imageContent = stream_get_contents($image->getPath());
+            array_push($readyImages, $imageContent);
+        }
+
+
 
         return $this->render('admin/project.html.twig', [
             'project' => $project,
+            'images' => $readyImages,
+
         ]);
 
     }
+    /**
+     * @Route("/admin/newImages", name="newImages")
+     */
+    public function newImages( Request $request, FileService $fileService, ProjectRepository $projectRepository): Response
+    {
+       $images = $request->request->get('images');
+
+
+       $project = $projectRepository->find(9);
+
+       //upload images new project images
+       foreach ($images as $imageCode){
+           $image = new Image();
+           $image->setPath($imageCode);
+           $image->setProject($project);
+           $em = $this->getDoctrine()->getManager();
+           $em->persist($image);
+           $em->flush();
+           var_dump(1);
+           exit();
+
+       }
+
+
+
+    }
+
+
 }
