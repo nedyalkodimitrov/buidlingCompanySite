@@ -21,7 +21,7 @@
     <div class="c-project-images">
         <h3 class="text-center col-12 o-margin--t--4">Начална снимка </h3>
         <div class="c-project-images__profileImage-holder">
-            <img src="{{ asset("projects/"~project.profileImage) }}" alt="" id="profileImage">
+            <img src="{{profileImage }}" alt="" id="profileImage">
             <label for="newProfileImageInput" class="c-project-images__profileImage-holder__afterEffect m-0">
                 <i class="fas fa-camera-retro"></i>
             </label>
@@ -31,13 +31,17 @@
         <div class="c-project-images__addImages-holder justify-content-center col-11 p-0 mx-auto row">
             <h3 class="text-center col-12 o-margin--t--2">Снимките на вашият обект  </h3>
             {% for image in images %}
-                <div class="col-11 col-md-6 col-lg-4 p-0 o-margin--t--1">
+                <div class="col-11 col-md-6 col-lg-4 p-0 o-margin--t--2" >
                     <div class="c-project-images__addImages-holder__image-holder col-11 mx-auto">
-                        <img src="{{ image }}" alt="">
+                        <img src="{{ image[1] }}" alt="">
+                        <div class="remove-image"><i class="fas fa-times"></i></div>
+{#                        href="{{ path("removeImageFromProject", {'id' : image[0]}) }}"#}
+
                     </div>
+
                 </div>
             {% endfor %}
-            <label for="projectImages"  class="col-4 p-0 o-margin--t--1" id="projectImagesContainer">
+            <label for="projectImages"  class="col-4 p-0 o-margin--t--2" id="projectImagesContainer">
                 <div class="c-project-images__addImages-holder__add-button col-11 mx-auto">
                       <i class="fas fa-plus"></i>
                     <input type="file" id="projectImages">
@@ -49,13 +53,13 @@
 
     <div class="c-textarea-container col-11 o-margin--t--4 mx-auto">
         <h3 class="col-12 text-center o-margin--b--1 ">Дайте информация относно обекта</h3>
-        <textarea name="" id="" >{{ project.information }}</textarea>
+        <textarea name="" id="information" >{{ project.information }}</textarea>
     </div>
 
     <div class="c-textarea-container o-margin--t--4 col-11 mx-auto">
         <h3 class="col-12 text-center ">Какви промени сте направили по обекта</h3>
         <h5 class="col-12 text-center o-margin--b--1">Разделете промените със интервал или запетая</h5>
-        <textarea name="" id="" > {{ project.changes }}</textarea>
+        <textarea name="" id="changes" > {{ project.changes }}</textarea>
     </div>
 
     <div class="c-admin-project-buttons row col-11 mx-auto o-margin--t--4">
@@ -73,6 +77,11 @@
 
     <script>
         var newImages = [];
+        var tempDeleteImages = []
+        var newProfilePic = "";
+        var oldProfilePic = $('#profileImage').src;
+
+        // add images for project
         $('#projectImages').change(function (){
             var input = this;
             if (input.files && input.files[0]) {
@@ -81,20 +90,50 @@
                 reader.onload = function (e) {
 
                     newImages.push(e.target.result)
-                    console.log(e.target.result);
+
                 }
                 reader.readAsDataURL(input.files[0]);
             }
 
+
             createImageCard(this);
 
         });
-        $("#newProfileImageInput").change(function(){
-            readURL(this, "#profileImage");
+
+
+        //remove image from project
+        $('.remove-image').on('click', function (){
+            var parentNode = $(this).parent().parent();
+            parentNode.css('display', 'none');
+
+
         });
 
+
+
+        // change the profile picture
+        $("#newProfileImageInput").change(function(){
+            // function return array with one value and this is the way i get it
+            newProfilePic = changeProfilePic(this);
+
+        });
+
+
+        //send all changes to the web server
         $('#send-changes').on('click', function (){
-            console.log( ajaxRequest('POST', '/admin/newImages', {'images' : newImages} ));
+
+            var information = $('#information').val();
+            var changes = $('#changes').val();
+            var projectId = {{ project.id }};
+
+            var data = {'images' : newImages,
+                        'profileImage' : newProfilePic,
+                        'information' : information,
+                        'changes' : changes,
+                        'deleteImages' : tempDeleteImages,
+                        'projectId' : projectId };
+
+            console.log( ajaxRequest('POST', '/admin/projectChanges', data));
         });
 
     </script>

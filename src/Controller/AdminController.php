@@ -67,7 +67,7 @@ class AdminController extends AbstractController
 
 
     /**
-     * @Route("/admin/project/{id}", name="project")
+     * @Route("/admin/project/{id}", name="adminProject")
      */
     public function project($id,ImageRepository $imageRepository, ProjectRepository $projectRepository, ProjectTypeRepository $projectTypeRepository, Request $request, FileService $fileService): Response
     {
@@ -78,8 +78,11 @@ class AdminController extends AbstractController
         $readyImages = [];
 
         foreach ($projectImages as $image){
+            $imageInfo = [];
             $imageContent = stream_get_contents($image->getPath());
-            array_push($readyImages, $imageContent);
+            array_push($imageInfo, $image->getId());
+            array_push($imageInfo, $imageContent);
+            array_push($readyImages,  $imageInfo);
         }
 
 
@@ -87,34 +90,132 @@ class AdminController extends AbstractController
         return $this->render('admin/project.html.twig', [
             'project' => $project,
             'images' => $readyImages,
+            'profileImage' => stream_get_contents($project->getProfileImage())
 
         ]);
 
     }
+
     /**
-     * @Route("/admin/newImages", name="newImages")
+     * @Route("/admin/message", name="removeProject")
      */
-    public function newImages( Request $request, FileService $fileService, ProjectRepository $projectRepository): Response
+    public function message( $id, Request $request, ProjectRepository $projectRepository, ImageRepository $imageRepository): Response
     {
-       $images = $request->request->get('images');
+        return 0;
+    }
+    /**
+     * @Route("/admin/projectChanges", name="projectChanges")
+     */
+    public function projectChanges( Request $request, ImageRepository $imageRepository, ProjectRepository $projectRepository): Response
+    {
+        $image = new Image();
+        $images = $request->request->get('images');
+        $projectId = $request->request->get('projectId');
+        $projectProfileImage = $request->request->get('profileImage');
+        $projectInformation = $request->request->get('information');
+        $projectChanges = $request->request->get('changes');
+        $removeImages = $request->request->get('deleteImages');
+
+        $em = $this->getDoctrine()->getManager();
 
 
-       $project = $projectRepository->find(9);
+        $project = $projectRepository->find(intval($projectId));
+
+        $project->setInformation($projectInformation);
+        $project->setChanges($projectChanges);
+
+        if(is_array($projectProfileImage)){
+
+            $project->setProfileImage($projectProfileImage[0]);
+            var_dump($projectProfileImage[0]);
+        }
+
+
+        $em->flush();
+        $this->addNewImages($images, $em, $project);
+//        $this->removeImages($removeImages, $em, $imageRepository);
+
+        var_dump(1);
+        exit();
+
+    }
+
+
+    private function addNewImages($images,  $em, Project $project)
+    {
 
        //upload images new project images
-       foreach ($images as $imageCode){
-           $image = new Image();
-           $image->setPath($imageCode);
-           $image->setProject($project);
-           $em = $this->getDoctrine()->getManager();
-           $em->persist($image);
-           $em->flush();
-           var_dump(1);
-           exit();
+       if (is_array($images)){
+           foreach ($images as $imageCode){
+               $image = new Image();
+               $image->setPath($imageCode);
+               $image->setProject($project);
+               $em->persist($image);
 
+           }
        }
 
+       $em->flush();
 
+
+    }
+
+
+    private function removeImages($removeImages,  $em, ImageRepository  $imageRepository)
+    {
+
+        //upload images new project images
+        if (is_array($removeImages)){
+            foreach ($removeImages as $imageId){
+                $image = $imageRepository->findBy(intval($imageId));
+                $em->remove($image);
+
+            }
+        }
+
+        $em->flush();
+        var_dump(1);
+        exit();
+
+    }
+
+    /**
+     * @Route("/admin/removeImageFromProject/{id}", name="removeImageFromProject")
+     */
+    public function removeImageFromProject( $id, Request $request, ImageRepository  $imageRepository): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $image = $imageRepository->find(intval($id));
+
+        $em->remove($image);
+        $em->flush();
+        var_dump(1);
+        exit();
+
+    }
+
+
+    /**
+     * @Route("/admin/removeProject/{id}", name="removeProject")
+     */
+    public function removeProject( $id, Request $request, ProjectRepository $projectRepository, ImageRepository $imageRepository): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $project = $projectRepository->find(intval($id));
+        $images = $imageRepository->findBy(['project' => intval($id)]);
+
+        if (is_array($images)){
+            foreach ($images as $image){
+                $em->remove($image);
+            }
+        }
+
+        $em->remove($project);
+        $em->flush();
+        var_dump(1);
+        exit();
 
     }
 

@@ -26,12 +26,16 @@
             </div>
         </div>
         <div class="c-form">
+            {{ form_start(form) }}
             <div class="col-12 mx-auto text-center c-form__text"><h3>Свържете се с нас </h3></div>
-            <input type="text" name="name"  class="c-form__input" placeholder="Вашето име е">
-            <input type="text" name="email" class="c-form__input" placeholder="Вашият емейл е">
-            <input type="text" name="phone" class="c-form__input" placeholder="Вашият телефон е">
-            <textarea  name="textarea" class="c-form__textarea" placeholder="Вашето съобщение..." ></textarea>
-            <button class="o-button c-form__send-button">Изпрати</button>
+            {{ form_widget(form.senderName, {'attr': {'class': 'c-form__input', 'placeholder' : 'Вашето име е'}}) }}
+            {{ form_widget(form.senderEmail, {'attr': {'class': 'c-form__input', 'placeholder' : 'Вашият емейл е'}}) }}
+            {{ form_widget(form.senderPhone, {'attr': {'class': 'c-form__input', 'placeholder' : 'Вашият телефон е'}}) }}
+            {{ form_widget(form.senderMessage, {'attr': {'class': 'c-form__textarea', 'placeholder' : 'Вашето съобщение...'}}) }}
+
+
+            {{ form_widget(form.save, {'attr': {'class': 'o-button c-form__send-button'}}) }}
+            {{ form_end(form) }}
          </div>
         
     </div>

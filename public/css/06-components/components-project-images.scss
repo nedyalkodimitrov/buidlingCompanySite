@@ -1,4 +1,6 @@
 .c-project-images{
+  //this is for profile images
+
   &__profileImage-holder{
     position: relative;
     width: 15em;
@@ -13,7 +15,7 @@
     input {
       display: none;
     }
-
+  // after hover effect of profile image
     &__afterEffect {
       transition: 0.35s;
       cursor: pointer;
@@ -39,10 +41,16 @@
       height: 100%;
     }
 
+
+
   }
+  //container of all project images
   &__addImages-holder {
     padding: 1rem ;
+
     &__image-holder, &__add-button {
+      cursor: pointer;
+      transition: 0.35s;
       margin: 0em;
       padding: 0;
       border: 5px solid #8B0052;
@@ -56,6 +64,17 @@
         object-fit: cover;
       }
 
+      &:hover{
+        transform: scale(1.1);
+        z-index: 1;
+        .remove-image {
+          z-index: 1;
+          background: rgba(187,5,4,1);
+
+          i{
+          }
+        }
+      }
     }
 
     &__add-button{
@@ -65,9 +84,7 @@
        align-items: center;
        text-align: center;
        background: linear-gradient(to right, #8B0052,#8B0052);
-       background-repeat: no-repeat;
-       background-size: 0% 0%;
-       background-position: center;
+       color: white;
        &:hover {
          background-size: 100% 100%;
        }
@@ -75,12 +92,37 @@
          position: absolute;
          top: 50%; left: 50%;
          transform: translate(-50%, -50%);
-         font-size: 3em;
+         font-size: 5rem;
        }
       input{
         display: none;
       }
      }
 
+
+
   }
+}
+
+
+.remove-image {
+  transition: 0.35s;
+  position: absolute;
+  top: 0; right: 0;bottom: 0;left: 0;
+  z-index: -1;
+  font-size: 2em;
+  color: #BB0504;
+  border: none;
+  background: rgba(187,5,4,0);
+
+  i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    color: white;
+  }
+
+
 }

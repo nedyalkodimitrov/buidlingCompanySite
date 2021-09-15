@@ -43,6 +43,8 @@
   padding: 1rem;
 }
 .c-project-images__addImages-holder__image-holder, .c-project-images__addImages-holder__add-button {
+  cursor: pointer;
+  transition: 0.35s;
   margin: 0em;
   padding: 0;
   border: 5px solid #8B0052;
@@ -55,6 +57,14 @@
   height: 100%;
   object-fit: cover;
 }
+.c-project-images__addImages-holder__image-holder:hover, .c-project-images__addImages-holder__add-button:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+.c-project-images__addImages-holder__image-holder:hover .remove-image, .c-project-images__addImages-holder__add-button:hover .remove-image {
+  z-index: 1;
+  background: #bb0504;
+}
 .c-project-images__addImages-holder__add-button {
   cursor: pointer;
   transition: 0.35s ease-in-out;
@@ -62,9 +72,7 @@
   align-items: center;
   text-align: center;
   background: linear-gradient(to right, #8B0052, #8B0052);
-  background-repeat: no-repeat;
-  background-size: 0% 0%;
-  background-position: center;
+  color: white;
 }
 .c-project-images__addImages-holder__add-button:hover {
   background-size: 100% 100%;
@@ -74,10 +82,32 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 3em;
+  font-size: 5rem;
 }
 .c-project-images__addImages-holder__add-button input {
   display: none;
+}
+
+.remove-image {
+  transition: 0.35s;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  font-size: 2em;
+  color: #BB0504;
+  border: none;
+  background: rgba(187, 5, 4, 0);
+}
+.remove-image i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  color: white;
 }
 
 /*# sourceMappingURL=components-project-images.css.map */

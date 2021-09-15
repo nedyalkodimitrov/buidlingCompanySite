@@ -56,7 +56,7 @@ class Project
     private $changes;
 
     /**
-         * @ORM\Column(type="string")
+         * @ORM\Column(type="blob")
      */
     private $profileImage;
 

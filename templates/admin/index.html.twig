@@ -21,7 +21,7 @@
             {% for project in projects %}
                 {% if project.projectType.Name == type %}
                     <div class="c-card col-4 ">
-                        <a href="">
+                        <a href="{{ path("adminProject", {'id' : project.id}) }}" >
                             <div class="c-card__image-container">
                                 <img src="{{asset("images/church.jpg")}}" class="c-card__image-container__image" alt="">
 
