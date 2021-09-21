@@ -2,7 +2,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{asset("css/06-components/components-user-project-header.css")}}" rel="stylesheet">
-
+    <link href="{{asset("css/06-components/components-project-images.css")}}" rel="stylesheet">
 {% endblock %}
 
 {% block javascripts %}
@@ -26,9 +26,36 @@
         </div>
     </header>
 
-    <div class="c-user-project-information">
-
+    <div class="c-user-project-information col-11 mx-auto ">
+        <h3 class="text-center col-12 o-margin--t--2">Защо избраха нас  </h3>
+        <h5>{{ project.information }}</h5>
     </div>
 
+    <div class="c-project-images">
+        <div class="c-project-images__addImages-holder  col-11 p-0 mx-auto row">
+            <h3 class="text-center col-12 o-margin--t--2">Снимките на вашият обект  </h3>
+            {% for image in readyImages %}
+                <div class="col-11 col-md-6 col-lg-4 p-0 o-margin--t--2" >
+                    <div class="c-project-images__addImages-holder__image-holder col-11 mx-auto">
+                        <img src="{{ image}}" alt="">
 
+                        {#                        href="{{ path("removeImageFromProject", {'id' : image[0]}) }}"#}
+
+                    </div>
+
+                </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+    <div class="col-11 mx-auto o-margin--t--2">
+        <h2 class="col-12 text-center">Направени промени</h2>
+
+        {% for change in project.changes|split(',') %}
+            <h5 class="col-3 mx-auto">- {{ change }}</h5>
+
+
+    {% endfor %}
+    </div>
 {% endblock %}

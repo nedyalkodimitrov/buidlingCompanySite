@@ -43,7 +43,6 @@
   padding: 1rem;
 }
 .c-project-images__addImages-holder__image-holder, .c-project-images__addImages-holder__add-button {
-  cursor: pointer;
   transition: 0.35s;
   margin: 0em;
   padding: 0;
@@ -62,6 +61,7 @@
   z-index: 1;
 }
 .c-project-images__addImages-holder__image-holder:hover .remove-image, .c-project-images__addImages-holder__add-button:hover .remove-image {
+  cursor: pointer;
   z-index: 1;
   background: #bb0504;
 }
