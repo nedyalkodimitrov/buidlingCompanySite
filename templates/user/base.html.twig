@@ -14,11 +14,10 @@
                     Проекти
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Къщи</a>
-                    <a class="dropdown-item" href="#">Апартаменти</a>
-                    {# <div class="dropdown-divider">Churches</div> #}
-                    <a class="dropdown-item" href="#">Църкви</a>
-                    <a class="dropdown-item" href="#">Покриви</a>
+                    <a class="dropdown-item" href="{{ path('arrangedProjects' ,{'type' : 'houses'}) }}">Къщи</a>
+                    <a class="dropdown-item" href="{{ path('arrangedProjects' ,{'type' : 'apartments'}) }}">Апартаменти</a>
+                    <a class="dropdown-item" href="{{ path('arrangedProjects' ,{'type' : 'church'}) }}">Църкви</a>
+                    <a class="dropdown-item" href="{{ path('arrangedProjects' ,{'type' : 'roofs'}) }}">Покриви</a>
                   </div>
                 </li >
                   <li class="nav-item c-navbar__elementsContainer__element ">

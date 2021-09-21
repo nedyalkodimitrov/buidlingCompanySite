@@ -1,9 +1,9 @@
 .c-how {
     position:relative;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    //padding-top: 2rem;
+    //padding-bottom: 2rem;
     overflow:hidden;
-    margin-bottom: 10rem;
+
     &:before {       
         content:" ";
         position: absolute;
@@ -25,12 +25,13 @@
         transform: translate(-50%, 0);
         color: white;
         z-index: 3;
-        max-width: 64em;
+
+        //max-width: 64em;
         width: 100%;
         text-align: justify;
         padding: 1rem;
-        margin-top: 3em;
-        margin-bottom: 3em;
+        //margin-top: 3em;
+        //margin-bottom: 3em;
 
     }
 

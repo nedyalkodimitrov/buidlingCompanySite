@@ -2,7 +2,7 @@
 {% block stylesheets %}
         {{ parent() }}
 
-       
+        <link href="{{asset("css/06-components/components-card.css")}}" rel="stylesheet">
 {% endblock %}
 
 {% block javascripts %}
@@ -11,4 +11,32 @@
 
 
 {% block body %}
+        <div class="col-11 mx-auto row mt-4">
+                <div class="col-12 text-center"><h3>Църкви</h3></div>
+                <hr class="col-9 mx-auto">
+                {{ projects.length }}
+                {% for project in projects %}
+                        <div class="c-card col-4 ">
+                                <a href="">
+                                        <div class="c-card__image-container">
+                                                <img src="{{asset("images/church.jpg")}}" class="c-card__image-container__image" alt="">
+
+                                                <div class="c-card__image-container__location">
+                                                        <h6>{{project.location }} </h6>
+                                                </div>
+                                        </div>
+                                </a>
+
+
+
+                        </div>
+                {% endfor %}
+        </div>
+
+
+
+
+
+
+
 {% endblock %}

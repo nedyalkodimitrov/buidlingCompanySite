@@ -5,14 +5,93 @@
     <link href="{{asset("css/06-components/components-add-project.css")}}" rel="stylesheet">
     <link href="{{asset("css/06-components/components-project-images.css")}}" rel="stylesheet">
     <link href="{{asset("css/06-components/components-textarea.css")}}" rel="stylesheet">
+    <link href="{{asset("css/06-components/components-message-sidebar.css")}}" rel="stylesheet">
+    <link href="{{asset("css/06-components/components-message.css")}}" rel="stylesheet">
     <link href="{{asset("css/07-utilities/utilities-admin-intro.css")}}" rel="stylesheet">
 
 {% endblock %}
 {% block title %}Hello AdminController!{% endblock %}
 
 
+{% block navbarElements %}
+
+    <li class="nav-item   c-navbar__elementsContainer__element  ">
+        <a class="nav-link" href="{{ path('adminHome') }}">Добавяне на проект  <span class="sr-only">(current)</span></a>
+    </li>
+
+    <li class="nav-item c-navbar__elementsContainer__element c-navbar__elementsContainer__element--active">
+        <a class="nav-link" href="{{ path('messages') }}">Съобщения</a>
+    </li>
+{% endblock %}
+
 
 {% block body %}
+
+    <div class="col-12 m-0 p-0 row ">
+        <div class="col-4 c-message-sidebar p-0 m-0">
+            {% for message in messages %}
+                <div class="col-12 c-message-sidebar__element row justify-content-between mx-auto align-center">
+                    <input type="hidden" value="{{ message.id }}" class="messageId">
+                    <h5>{{ message.senderName }} </h5>
+                    <h5>{{ message.sendedDate }}</h5>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-8 c-message">
+           <h3 class="text-center p-2">Избери съобщение</h3>
+        </div>
+
+    </div>
+
+
+    <script>
+
+
+        $('.c-message-sidebar__element').on('click', function (){
+            var currentlyActive = $('.c-message-sidebar').find('.c-message-sidebar__element--active');
+            console.log(currentlyActive)
+            currentlyActive.removeClass('c-message-sidebar__element--active')
+            //set new active sidebar element
+            $(this).addClass('c-message-sidebar__element--active');
+
+
+
+            var messageId = $(this).find('.messageId').val();
+            console.log(messageId);
+            var data = {'messageId' : messageId};
+            var message =  ajaxRequest('POST', '/admin/getMessage', data);
+            console.log(message);
+
+            var messageConstruction = "  <h3 class=\"text-center p-2\">"+ message.senderName +"</h3>\n" +
+                "                        <h5>"+ message.senderMessage +"</h5>\n" +
+                "                        <div class=\"col-12 text-center row pt-2 justify-content-between\">\n" +
+                "                           <h5 >Емайл адрес: "+ message.senderEmail +"</h5>\n" +
+                "                           <h5>Телефонен номер: "+ message.senderPhone +"</h5>\n" +
+                "                       </div>\n" +
+                "                       <button class=\"btn btn-danger col-12 my-2 c-message__deleteMessage\" onclick=deleteMessage("+ message.id +")>Изтриване на съобщението</button>"
+
+            $('.c-message').empty();
+            $('.c-message').append(messageConstruction);
+
+
+        });
+
+        function deleteMessage(messageId){
+            $('.c-message').empty();
+            $('.c-message').append('<h3 class="text-center p-2">Избери съобщение</h3>');
+            $('.c-message-sidebar__element--active').remove();
+
+
+            var data = {'messageId' : messageId};
+            var message =  ajaxRequest('POST', '/admin/deleteMessage', data);
+
+
+        }
+
+
+
+    </script>
+
 
 {% endblock %}
 

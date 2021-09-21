@@ -1,0 +1,20 @@
+.c-message-sidebar{
+  height: 100vh;
+  max-height: 100%;
+  border-right: 1px solid black;
+  &__element{
+    border-bottom: 2px solid #8B0052;
+    padding: 1em;
+    cursor: pointer;
+    width: 100%;
+    &:hover{
+      background: rgba(139, 0, 82, 0.85);
+      color: white;
+    }
+    &--active {
+      background: #8B0052;
+      color: white;
+    }
+
+  }
+}

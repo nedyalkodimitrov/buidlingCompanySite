@@ -1,0 +1,46 @@
+{% extends 'user/base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href="{{asset("css/06-components/components-card.css")}}" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+
+
+{% block body %}
+    <div class="col-11 mx-auto row mt-4">
+
+        <div class="col-12 text-center"><h3>{{ type }}</h3></div>
+        <hr class="col-9 mx-auto">
+
+        {% for project in projects %}
+
+           <div class="col-4 mt-4 p-0 m-0 ">
+               <div class="c-card col-11 mx-auto ">
+                   <a href="{{ project[0] }}">
+                       <div class="c-card__image-container">
+                           <img src="{{ project[1] }}" class="c-card__image-container__image" alt="">
+
+                           <div class="c-card__image-container__location">
+                               <h6>{{project[2] }} </h6>
+                           </div>
+                       </div>
+                   </a>
+
+
+
+               </div>
+           </div>
+        {% endfor %}
+    </div>
+
+
+
+
+
+
+
+{% endblock %}

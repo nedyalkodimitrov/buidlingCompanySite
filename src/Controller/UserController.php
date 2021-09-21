@@ -6,8 +6,10 @@ use App\Entity\Message;
 use App\Entity\Project;
 use App\Form\MessageType;
 use App\Form\ProjectType;
+use App\Repository\ImageRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\ProjectsRepository;
+use App\Repository\ProjectTypeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,7 +37,7 @@ class UserController extends AbstractController
 
         
 
-        return $this->render('user/projects/projects.html.twig', [
+        return $this->render('user/projects/allProjects.html.twig', [
             'controller_name' => 'UserController',
             'projects' => $projects,
         ]);
@@ -68,5 +70,68 @@ class UserController extends AbstractController
             'controller_name' => 'UserController',
             'form' => $form->createView()
         ]);
+    }
+
+
+    /**
+     * @Route("/projects/{type}", name="arrangedProjects")
+     */
+    public function arrangedProjects($type,ProjectRepository $projectRepository, Request $request, MessageType $messageType, ProjectTypeRepository $projectTypeRepository): Response
+    {
+
+        $projectType = $projectTypeRepository->findOneBy(["englishName" => $type]);
+        $projects = $projectRepository->findBy(["projectType" => $projectType]);
+
+        $readyProjects = [];
+
+        foreach ($projects as $project){
+            $projectInfo = [];
+            $projectImage = stream_get_contents($project->getProfileImage());
+            array_push($projectInfo,$project->getId());
+            array_push($projectInfo,$projectImage);
+            array_push($projectInfo, $project->getLocation());
+            array_push($projectInfo, $project->getProjectType());
+            array_push($readyProjects, $projectInfo);
+
+        }
+
+
+        return $this->render('user/projects/arrangedProjects.html.twig', [
+            'controller_name' => 'UserController',
+            'projects' => $readyProjects,
+            'type' => $projectType->getName()
+        ]);
+
+
+    }
+
+
+
+    /**
+     * @Route("/project/{id}", name="projectView")
+     */
+    public function projectView($id,ProjectRepository $projectRepository, ImageRepository $imageRepository): Response
+    {
+        $project = $projectRepository->find(intval($id));
+        $images = $imageRepository->findBy(["project" => $project]);
+        $profileImage =  stream_get_contents($project->getProfileImage());
+
+
+        $readyImages = [];
+
+        foreach ($images as $image){
+            $projectImage = stream_get_contents($image->getPath());
+            array_push($readyImages, $projectImage);
+        }
+
+
+        return $this->render('user/projects/project.html.twig', [
+            'controller_name' => 'UserController',
+            'project' => $project,
+            'readyImages' => $readyImages,
+            'profileImage' => $profileImage,
+        ]);
+
+
     }
 }

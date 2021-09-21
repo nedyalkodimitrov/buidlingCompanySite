@@ -37,6 +37,11 @@ class Message
      */
     private $senderMessage;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $sendedDate;
+
 
 
 
@@ -107,6 +112,22 @@ class Message
     public function setSenderMessage($senderMessage): void
     {
         $this->senderMessage = $senderMessage;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSendedDate()
+    {
+        return $this->sendedDate;
+    }
+
+    /**
+     * @param mixed $sendedDate
+     */
+    public function setSendedDate($sendedDate): void
+    {
+        $this->sendedDate = $sendedDate;
     }
 
 
