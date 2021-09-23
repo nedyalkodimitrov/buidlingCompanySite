@@ -64,7 +64,7 @@ class AdminGetController extends AbstractController
     /**
      * @Route("/admin/project/{id}", name="adminProject")
      */
-    public function project($id,ImageRepository $imageRepository, ProjectRepository $projectRepository, ProjectTypeRepository $projectTypeRepository, Request $request, FileService $fileService): Response
+    public function projectView($id,ImageRepository $imageRepository, ProjectRepository $projectRepository, ProjectTypeRepository $projectTypeRepository, Request $request, FileService $fileService): Response
     {
 
         $project = $projectRepository->find(intval($id));

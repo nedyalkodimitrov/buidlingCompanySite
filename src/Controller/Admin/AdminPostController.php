@@ -18,7 +18,7 @@ class AdminPostController extends AbstractController
     /**
      * @Route("/admin/projectChanges", name="projectChanges")
      */
-    public function projectChanges( Request $request, ImageRepository $imageRepository, ProjectRepository $projectRepository): Response
+    public function projectChangesAction( Request $request, ImageRepository $imageRepository, ProjectRepository $projectRepository): Response
     {
         $image = new Image();
         $images = $request->request->get('images');
@@ -44,7 +44,7 @@ class AdminPostController extends AbstractController
 
 
         $em->flush();
-        $this->addNewImages($images, $em, $project);
+        $this->addNewImagesAction($images, $em, $project);
 //        $this->removeImages($removeImages, $em, $imageRepository);
 
         var_dump(1);
@@ -53,7 +53,7 @@ class AdminPostController extends AbstractController
     }
 
 
-    private function addNewImages($images,  $em, Project $project)
+    private function addNewImagesAction($images,  $em, Project $project)
     {
 
         //upload images new project images
@@ -73,7 +73,7 @@ class AdminPostController extends AbstractController
     }
 
 
-    private function removeImages($removeImages,  $em, ImageRepository  $imageRepository)
+    private function removeImagesAction($removeImages,  $em, ImageRepository  $imageRepository)
     {
 
         //upload images new project images
@@ -94,7 +94,7 @@ class AdminPostController extends AbstractController
     /**
      * @Route("/admin/removeImageFromProject/{id}", name="removeImageFromProject")
      */
-    public function removeImageFromProject( $id, Request $request, ImageRepository  $imageRepository): Response
+    public function removeImageFromProjectAction( $id, Request $request, ImageRepository  $imageRepository): Response
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -111,7 +111,7 @@ class AdminPostController extends AbstractController
     /**
      * @Route("/admin/removeProject/{id}", name="removeProject")
      */
-    public function removeProject( $id, Request $request, ProjectRepository $projectRepository, ImageRepository $imageRepository): Response
+    public function removeProjectAction( $id, Request $request, ProjectRepository $projectRepository, ImageRepository $imageRepository): Response
     {
         $em = $this->getDoctrine()->getManager();
 

@@ -31,7 +31,7 @@ class UserController extends AbstractController
       /**
      * @Route("/projects", name="projects")
      */
-    public function projects(ProjectRepository $project): Response
+    public function projectsView(ProjectRepository $project): Response
     {
         $projects = $project->findAll();
 
@@ -46,7 +46,7 @@ class UserController extends AbstractController
       /**
      * @Route("/contactUs", name="contactUs")
      */
-    public function contactUs(Request $request, MessageType $messageType): Response
+    public function contactUsView(Request $request, MessageType $messageType): Response
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -76,7 +76,7 @@ class UserController extends AbstractController
     /**
      * @Route("/projects/{type}", name="arrangedProjects")
      */
-    public function arrangedProjects($type,ProjectRepository $projectRepository, Request $request, MessageType $messageType, ProjectTypeRepository $projectTypeRepository): Response
+    public function arrangedProjectsView($type,ProjectRepository $projectRepository, Request $request, MessageType $messageType, ProjectTypeRepository $projectTypeRepository): Response
     {
 
         $projectType = $projectTypeRepository->findOneBy(["englishName" => $type]);

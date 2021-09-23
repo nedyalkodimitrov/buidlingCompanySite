@@ -2,7 +2,7 @@
 {% block stylesheets %}
         {{ parent() }}
         <link href="{{asset("css/06-components/components-card.css")}}" rel="stylesheet">
-        <link href="{{asset("css/06-components/components-add-project.css")}}" rel="stylesheet">
+        <link href="{{asset("css/06-components/components-admin/components-add-project.css")}}" rel="stylesheet">
 {% endblock %}
 {% block title %}Hello AdminController!{% endblock %}
 
@@ -20,16 +20,18 @@
 
             {% for project in projects %}
                 {% if project.projectType.Name == type %}
-                    <div class="c-card col-4 ">
-                        <a href="{{ path("adminProject", {'id' : project.id}) }}" >
-                            <div class="c-card__image-container">
-                                <img src="{{asset("images/church.jpg")}}" class="c-card__image-container__image" alt="">
-                                <div class="c-card__image-container__location">
-                                    <h6>{{project.location }} </h6>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                   <div class="col-4  o-margin--t--2 p-0">
+                       <div class="c-card col-11 mx-auto ">
+                           <a href="{{ path("adminProject", {'id' : project.id}) }}" >
+                               <div class="c-card__image-container">
+                                   <img src="{{asset("images/church.jpg")}}" class="c-card__image-container__image" alt="">
+                                   <div class="c-card__image-container__location">
+                                       <h6>{{project.location }} </h6>
+                                   </div>
+                               </div>
+                           </a>
+                       </div>
+                   </div>
                     {% set projectCointer = projectCointer + 1 %}
                 {% endif %}
 
