@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,SAAS,CAAA;EACL,OAAO,EAAE,KAAK;EACd,MAAM,EAAE,eAAe;CAC1B",
-    "sources": [
-        "objects-buttons.scss"
-    ],
-    "names": [],
-    "file": "objects-buttons.css"
-}
+{"version":3,"sourceRoot":"","sources":["objects-buttons.scss"],"names":[],"mappings":"AAAA;EACI;EACA;;AACA;EACI;EAEA;EACA;EACA;EACA;;AACA;EACI","file":"objects-buttons.css"}

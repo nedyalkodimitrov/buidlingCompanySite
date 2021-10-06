@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import '../../02-tools/tools-breakpoints.scss';
 
 .c-header {
     padding: 0;
     margin: 0;
 
     &__info-container{
+        word-break: break-word;
         background-color: #BB0504;
 
         &__secondary-text, &__primary-text{
@@ -40,6 +42,34 @@
             object-fit: cover;
             width: 100%;
             height: 100%;
+        }
+    }
+    @include for-phone-only{
+        &__image-container {
+            order: 1;
+        }
+        &__info-container {
+            order: 2;
+        }
+    }
+
+
+    @include for-tablet-portrait-up{
+        &__image-container {
+            order: 1;
+        }
+        &__info-container {
+            order: 2;
+        }
+
+    }
+    @include for-tablet-landscape-up{
+        &__image-container {
+            order: 2;
+        }
+
+        &__info-container {
+            order: 1;
         }
     }
 

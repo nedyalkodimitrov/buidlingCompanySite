@@ -1,7 +1,7 @@
 {% extends 'user/base.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-
+    <link href="{{asset("css/06-components/components-user-project-header.css")}}" rel="stylesheet">
     <link href="{{asset("css/06-components/components-card.css")}}" rel="stylesheet">
 {% endblock %}
 
@@ -11,14 +11,36 @@
 
 
 {% block body %}
-    <div class="col-11 mx-auto row mt-4">
 
-        <div class="col-12 text-center"><h3>{{ type }}</h3></div>
-        <hr class="col-9 mx-auto">
+    <header class="col-12 c-user-project-header m-0  ">
+        <div class="c-user-project-header__information-container">
+            <div class="c-user-project-header__information-container__text">
+                <div class="col-12 text-center"><h2>{{ type }}</h2></div>
+            </div>
+        </div>
+
+        <div class="c-user-project-header__image-container col-12 m-0 p-0">
+            {% if type == "Къщи" %}
+                {% set imgType = "house.jpg" %}
+            {% endif %}
+            {% if type == "Апартаменти" %}
+                {% set imgType = "apartments.jpg" %}
+            {% endif %}
+            {% if type == "Покриви" %}
+                {% set imgType = "roof.jpg" %}
+            {% endif %}
+            {% if type == "Църкви" %}
+                {% set imgType = "church.jpg" %}
+            {% endif %}
+            <img src="{{ asset('images/header/header-'~imgType) }}" class="" alt="">
+        </div>
+    </header>
+
+    <div class="col-11 mx-auto row mt-2">
 
         {% for project in projects %}
 
-           <div class="col-4 mt-4 p-0 m-0 ">
+           <div class="col-12 col-md-6 col-lg-4 mt-4 p-0 m-0 ">
                <div class="c-card col-11 mx-auto ">
                    <a href="{{ path('projectView', {'id' :project[0]}) }}">
                        <div class="c-card__image-container">

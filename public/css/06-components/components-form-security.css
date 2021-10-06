@@ -7,32 +7,26 @@
   padding: 2em;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
-
 @media (max-width: 599px) {
   .c-form-security {
     width: 100%;
     padding: 2.5em;
   }
 }
-
 .c-form-security__logo-holder {
   text-align: center;
-  margin-bottom: 4em;
+  margin-bottom: 1em;
 }
-
 .c-form-security__input-holder {
   margin-bottom: 1.5em;
   width: 100%;
   position: relative;
 }
-
 .c-form-security__input-holder input {
   margin: auto;
 }
-
 .c-form-security button {
   margin: auto;
   padding: 0.5em 0.8em;
@@ -44,13 +38,13 @@
   line-height: 1.5;
   font-size: 1.2em;
   text-align: center;
-  background-color: #6873A5;
+  background-color: #8B0052;
   opacity: 0.6;
-  -webkit-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
 }
-
 .c-form-security button:hover {
+  color: white;
   opacity: 1;
 }
+
 /*# sourceMappingURL=components-form-security.css.map */

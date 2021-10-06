@@ -2,11 +2,12 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset("css/06-components/components-form-security.css") }}">
     <link rel="stylesheet" href="{{ asset("css/06-components/components-input.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/06-components/components-input.css") }}">
     <link rel="stylesheet" href="{{ asset("css/07-utilities/utilities-security-page.css") }}">
 {% endblock %}
-{% block title %}Dimitrov Buikdi | Sign in{% endblock %}
+{% block title %}Dimitrov Building | Sign in{% endblock %}
 {% block body %}
-<form method="post">
+<form method="post" class="col-11 mx-auto c-form-security">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -17,14 +18,15 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputUsername">Username</label>
-    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    <h1 class="c-form-security__logo-holder">Влизане в администраторския акаунт</h1>
+    <label for="inputUsername" class="c-logIn__label">Потребителско име</label>
+    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control c-form-security__input-holder" autocomplete="username" required autofocus>
+    <label for="inputPassword" class="c-logIn__label">Парола</label>
+    <input type="password" name="password" id="inputPassword" class="form-control c-form-security__input-holder" autocomplete="current-password" required>
 
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
+           class="col-12 mx-auto"
     >
 
     {#
@@ -38,8 +40,8 @@
         </div>
     #}
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+    <button class="btn btn-lg col-12" type="submit">
+        Влез
     </button>
 </form>
 {% endblock %}

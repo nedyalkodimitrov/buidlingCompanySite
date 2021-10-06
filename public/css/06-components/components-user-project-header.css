@@ -32,5 +32,30 @@
   height: 100%;
   object-fit: cover;
 }
+@media (max-width: 599px) {
+  .c-user-project-header {
+    padding-top: 70%;
+  }
+}
+@media (min-width: 600px) {
+  .c-user-project-header {
+    padding-top: 50%;
+  }
+}
+@media (min-width: 900px) {
+  .c-user-project-header {
+    padding-top: 30%;
+  }
+}
+@media (min-width: 1200px) {
+  .c-user-project-header {
+    padding-top: 25%;
+  }
+}
+@media (min-width: 1800px) {
+  .c-user-project-header {
+    padding-top: 10%;
+  }
+}
 
 /*# sourceMappingURL=components-user-project-header.css.map */

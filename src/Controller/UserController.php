@@ -43,6 +43,18 @@ class UserController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/aboutUs", name="aboutUsView")
+     */
+    public function aboutUsView(ProjectRepository $project): Response
+    {
+
+        return $this->render('user/aboutUs.html.twig', [
+            'controller_name' => 'UserController',
+
+        ]);
+    }
+
       /**
      * @Route("/contactUs", name="contactUs")
      */

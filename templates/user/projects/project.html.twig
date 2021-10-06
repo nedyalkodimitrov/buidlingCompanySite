@@ -26,9 +26,18 @@
         </div>
     </header>
 
+
+
     <div class="c-user-project-information col-11 mx-auto ">
         <h3 class="text-center col-12 o-margin--t--2">Защо избраха нас  </h3>
         <h5>{{ project.information }}</h5>
+    </div>
+    <div class="col-11 mx-auto justify-content-center o-margin--t--2 row">
+        <h3 class="col-12 text-center">Направени промени</h3>
+
+        {% for change in project.changes|split(',') %}
+            <h5 class="col-3 mx-auto text-center"> <i class="fas fa-check mr-2 " style="color: #BB0504"> </i>{{ change }} </h5>
+        {% endfor %}
     </div>
 
     <div class="c-project-images">
@@ -49,12 +58,5 @@
 
         </div>
     </div>
-    <div class="col-11 mx-auto o-margin--t--2">
-        <h2 class="col-12 text-center">Направени промени</h2>
 
-        {% for change in project.changes|split(',') %}
-            <h5 class="col-3 mx-auto">- {{ change }}</h5>
-
-    {% endfor %}
-    </div>
 {% endblock %}

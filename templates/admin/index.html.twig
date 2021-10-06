@@ -19,14 +19,14 @@
             {% set projectCointer = 0 %}
 
             {% for project in projects %}
-                {% if project.projectType.Name == type %}
+                {% if project[1] == type %}
                    <div class="col-4  o-margin--t--2 p-0">
                        <div class="c-card col-11 mx-auto ">
-                           <a href="{{ path("adminProject", {'id' : project.id}) }}" >
+                           <a href="{{ path("adminProject", {'id' : project[0]}) }}" >
                                <div class="c-card__image-container">
-                                   <img src="{{asset("images/church.jpg")}}" class="c-card__image-container__image" alt="">
+                                   <img src="{{ project[2] }}" class="c-card__image-container__image" alt="">
                                    <div class="c-card__image-container__location">
-                                       <h6>{{project.location }} </h6>
+                                       <h6>{{project[3] }} </h6>
                                    </div>
                                </div>
                            </a>

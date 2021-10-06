@@ -1,4 +1,17 @@
 .o-button{
     padding: 0.5em;
     border: 1px solid black;
+    &--red{
+        transition: 0.3s;
+
+        border-radius: 0;
+        background-color: rgba(0,0,0,0);
+        border: 2px solid #BB0504;
+        color: white;
+        &:hover{
+            background-color: #BB0504;
+        }
+
+    }
+
 }

@@ -48,12 +48,23 @@ class AdminGetController extends AbstractController
 
             return $this->redirectToRoute('admin');
         }
+        $readyProjects = [];
+
+        foreach ($projects as $project){
+            $projectInfo = [];
+            $imageContent = stream_get_contents($project->getProfileImage());
+            array_push($projectInfo, $project->getId());
+            array_push($projectInfo, $project->getProjectType());
+            array_push($projectInfo, $imageContent);
+            array_push($projectInfo, $project->getLocation());
+            array_push($readyProjects,  $projectInfo);
+        }
 
 
 
 
         return $this->render('admin/index.html.twig', [
-            'projects' => $projects,
+            'projects' => $readyProjects,
             'projectTypes' => $projectTypes,
             'controller_name' => 'AdminController',
             'form' => $form->createView()

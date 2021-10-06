@@ -19,7 +19,7 @@
 
   &__logo-holder{
     text-align: center;
-    margin-bottom: 4em;
+    margin-bottom: 1em;
   }
   &__input-holder{
 
@@ -45,11 +45,13 @@
     line-height: 1.5;
     font-size: 1.2em;
     text-align: center;
-    background-color: $primary-color;
+    background-color: #8B0052;
     opacity: 0.6;
     transition: opacity 0.3s ease-out;
     &:hover{
-  opacity: 1;
+      color: white;
+      opacity: 1;
+
     }
 
   }
