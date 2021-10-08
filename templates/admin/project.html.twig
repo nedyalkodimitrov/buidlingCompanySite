@@ -6,7 +6,7 @@
     <link href="{{asset("css/06-components/components-project-images.css")}}" rel="stylesheet">
     <link href="{{asset("css/06-components/components-admin/components-textarea.css")}}" rel="stylesheet">
     <link href="{{asset("css/07-utilities/utilities-admin-intro.css")}}" rel="stylesheet">
-
+    <script src="{{asset("js/clickDetection.js")}}"></script>
 {% endblock %}
 {% block title %}Hello AdminController!{% endblock %}
 
@@ -21,7 +21,12 @@
     <div class="c-project-images">
         <h3 class="text-center col-12 o-margin--t--4">Начална снимка </h3>
         <div class="c-project-images__profileImage-holder">
-            <img src="{{profileImage }}" alt="" id="profileImage">
+            {% if project.defaultImage %}
+                <img src="{{ asset('projects/'~profileImage) }}" alt="" id="profileImage">
+            {% else %}
+                    <img src="{{profileImage }}" alt="" id="profileImage">
+            {% endif %}
+
             <label for="newProfileImageInput" class="c-project-images__profileImage-holder__afterEffect m-0">
                 <i class="fas fa-camera-retro"></i>
             </label>
@@ -31,7 +36,7 @@
         <div class="c-project-images__addImages-holder justify-content-center col-11 p-0 mx-auto row">
             <h3 class="text-center col-12 o-margin--t--2">Снимките на вашият обект  </h3>
             {% for image in images %}
-                <div class="col-11 col-md-6 col-lg-4 p-0 o-margin--t--2" >
+                <div class="col-11 col-md-6 col-lg-4 p-0 o-margin--t--2" id="{{ image[0] }}">
                     <div class="c-project-images__addImages-holder__image-holder col-11 mx-auto">
                         <img src="{{ image[1] }}" alt="">
                         <div class="remove-image"><i class="fas fa-times"></i></div>
@@ -41,10 +46,10 @@
 
                 </div>
             {% endfor %}
-            <label for="projectImages"  class="col-4 p-0 o-margin--t--2" id="projectImagesContainer">
+            <label for="projectImages"  class="col-11 col-md-6 col-lg-4 p-0 o-margin--t--2" id="projectImagesContainer">
                 <div class="c-project-images__addImages-holder__add-button col-11 mx-auto">
                       <i class="fas fa-plus"></i>
-                    <input type="file" id="projectImages">
+                    <input type="file"  id="projectImages">
                 </div>
             </label>
 
@@ -64,22 +69,24 @@
 
     <div class="c-admin-project-buttons row col-11 mx-auto o-margin--t--4">
         <div class="col-6 p-1">
-            <button class="col-12 btn btn-secondary p-1">Отмяна на промените</button>
+            <button class="col-12 btn btn-secondary p-1" id="removeChanges">Отмяна на промените</button>
 
         </div>
         <div class="col-6 p-1">
             <button class="col-12 btn btn-success p-1 " id="send-changes">Запаметяване</button>
         </div>
-        <button class="col-12 btn btn-danger m-1">Изтриване на проекти</button>
+        <button class="col-12 btn btn-danger m-1">Изтриване на проекта</button>
     </div>
 
 
 
     <script>
         var newImages = [];
-        var tempDeleteImages = []
-        var newProfilePic = "";
-        var oldProfilePic = $('#profileImage').src;
+        var deletedImages = [];
+        var startNumberForCard = 1000;
+        var createdCardNumber = startNumberForCard;
+        var executedDelete = false;
+        var newProfilePic = '';
 
         // add images for project
         $('#projectImages').change(function (){
@@ -96,18 +103,33 @@
             }
 
 
-            createImageCard(this);
-
+            createImageCard(this, createdCardNumber);
+            createdCardNumber++;
         });
 
 
         //remove image from project
-        $('.remove-image').on('click', function (){
-            var parentNode = $(this).parent().parent();
-            parentNode.css('display', 'none');
+        $('div').on('click', '.remove-image', function (){
+           if (!executedDelete){
+               var parentNode = $(this).parent().parent();
+               parentNode.css('display', 'none');
+               var newImage = parentNode.hasClass('new-image');
+               if (newImage){
+                   newImages.splice(parentNode.id - startNumberForCard, 1);
+               }else{
+                   deletedImages.push(parentNode.attr('id'));
+               }
 
-
+               console.log(newImages);
+               console.log(deletedImages);
+               executedDelete = true;
+           }
+            setTimeout(function(){ executedDelete = false }, 10);
         });
+
+
+
+
 
 
 
@@ -130,15 +152,23 @@
                         'profileImage' : newProfilePic,
                         'information' : information,
                         'changes' : changes,
-                        'deleteImages' : tempDeleteImages,
+                        'deleteImages' : deletedImages,
                         'projectId' : projectId };
 
-            console.log( ajaxRequest('POST', '/admin/projectChanges', data));
+             var result = ajaxRequest('POST', '/admin/projectChanges', data);
+            if (result == '1'){
+                location.reload();
+            }
+        });
+
+        $('#removeChanges').on('click', function (){
+           location.reload();
         });
 
     </script>
     <script src="{{asset("js/animation/animation-hidden-content.js")}}"></script>
     <script src="{{asset("js/components/components-file-actions.js")}}"></script>
+
 
 {% endblock %}
 

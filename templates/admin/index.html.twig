@@ -20,7 +20,7 @@
 
             {% for project in projects %}
                 {% if project[1] == type %}
-                   <div class="col-4  o-margin--t--2 p-0">
+                   <div class="col-12 col-md-6 col-lg-4 mt-4 p-0 o-margin--t--2 p-0">
                        <div class="c-card col-11 mx-auto ">
                            <a href="{{ path("adminProject", {'id' : project[0]}) }}" >
                                <div class="c-card__image-container">

@@ -60,7 +60,10 @@ class Project
      */
     private $profileImage;
 
-
+    /**
+     * @ORM\Column(type="boolean", options={"default" : true})
+     */
+    private $defaultImage;
 
     /**
      * Get the value of location
@@ -210,5 +213,22 @@ class Project
 
         return "asdsad'";
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDefaultImage()
+    {
+        return $this->defaultImage;
+    }
+
+    /**
+     * @param mixed $defaultImage
+     */
+    public function setDefaultImage($defaultImage): void
+    {
+        $this->defaultImage = $defaultImage;
+    }
+
 
 }

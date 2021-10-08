@@ -23,11 +23,15 @@ class Image
      */
     public $project;
 
-    
+
+
     /**
          * @ORM\Column(type="blob")
      */
     private $path;
+
+
+
 
     public function getId(): ?int
     {
@@ -73,4 +77,15 @@ class Image
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstImage()
+    {
+        return $this->firstImage;
+    }
+
+
+
 }

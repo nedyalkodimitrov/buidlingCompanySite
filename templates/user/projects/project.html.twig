@@ -32,11 +32,11 @@
         <h3 class="text-center col-12 o-margin--t--2">Защо избраха нас  </h3>
         <h5>{{ project.information }}</h5>
     </div>
-    <div class="col-11 mx-auto justify-content-center o-margin--t--2 row">
+    <div class="col-11 p-0 m-0 mx-auto justify-content-center o-margin--t--2 row">
         <h3 class="col-12 text-center">Направени промени</h3>
 
         {% for change in project.changes|split(',') %}
-            <h5 class="col-3 mx-auto text-center"> <i class="fas fa-check mr-2 " style="color: #BB0504"> </i>{{ change }} </h5>
+            <h5 class="col-12 col-md-6 col-lg-3 mx-auto text-center  row text-md-center"> <i class="fas fa-check mr-4  " style="color: #BB0504"> </i>{{ change }} </h5>
         {% endfor %}
     </div>
 

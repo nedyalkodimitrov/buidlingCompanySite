@@ -39,16 +39,15 @@ class AdminPostController extends AbstractController
         if(is_array($projectProfileImage)){
 
             $project->setProfileImage($projectProfileImage[0]);
-            var_dump($projectProfileImage[0]);
+            $project->setDefaultImage(false);
         }
 
 
         $em->flush();
         $this->addNewImagesAction($images, $em, $project);
-//        $this->removeImages($removeImages, $em, $imageRepository);
+        $this->removeImagesAction($removeImages, $em, $imageRepository);
 
-        var_dump(1);
-        exit();
+        return $this->json(1);
 
     }
 
@@ -73,21 +72,21 @@ class AdminPostController extends AbstractController
     }
 
 
-    private function removeImagesAction($removeImages,  $em, ImageRepository  $imageRepository)
+    private function removeImagesAction($images,  $em, ImageRepository  $imageRepository)
     {
 
-        //upload images new project images
-        if (is_array($removeImages)){
-            foreach ($removeImages as $imageId){
-                $image = $imageRepository->findBy(intval($imageId));
+        //remove images from project
+        if (is_array($images)){
+            foreach ($images as $imageId){
+                var_dump(intval($imageId));
+                $image = $imageRepository->find(intval($imageId));
                 $em->remove($image);
 
             }
         }
 
         $em->flush();
-        var_dump(1);
-        exit();
+
 
     }
 
@@ -102,8 +101,7 @@ class AdminPostController extends AbstractController
 
         $em->remove($image);
         $em->flush();
-        var_dump(1);
-        exit();
+      return $this->json(1);
 
     }
 
@@ -126,8 +124,7 @@ class AdminPostController extends AbstractController
 
         $em->remove($project);
         $em->flush();
-        var_dump(1);
-        exit();
+        return $this->json(1);
 
     }
 

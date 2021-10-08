@@ -41,12 +41,13 @@ class AdminGetController extends AbstractController
 
 //            //move file and return unique path
             $imagePath = $fileService->MoveImage($form);
+            $task->setFirstImage(true);
             $task->setProfileImage($imagePath);
             $em = $this->getDoctrine()->getManager();
             $em->persist($task);
             $em->flush();
 
-            return $this->redirectToRoute('admin');
+            return $this->redirectToRoute('adminHome');
         }
         $readyProjects = [];
 
