@@ -8,10 +8,10 @@
   background-color: #BB0504;
 }
 .c-header__info-container__secondary-text, .c-header__info-container__primary-text {
-  padding: 0.3rem;
+  padding: 0.2rem;
   color: white;
   margin: 0;
-  margin-top: 1.5rem;
+  margin-top: 0.8rem;
 }
 .c-header__info-container__button {
   transition: 0.3s;
