@@ -15,7 +15,7 @@
     <header class="col-12 c-user-project-header m-0  ">
         <div class="c-user-project-header__information-container">
             <div class="c-user-project-header__information-container__text">
-                <h2 class="text-center mt-4">Локация: {{ project.location }}</h2>
+                <h1 class="text-center mt-4">Локация: {{ project.location }}</h1>
                 <h4 class="text-center mt-3">Период на строене: {{ project.startDate }} - {{ project.endDate }}</h4>
                 <h4 class="text-center mt-3">Тип: {{ project.projecttype.name }}</h4>
             </div>
@@ -29,14 +29,14 @@
 
 
     <div class="c-user-project-information col-11 mx-auto ">
-        <h3 class="text-center col-12 o-margin--t--2">Защо избраха нас  </h3>
-        <h5>{{ project.information }}</h5>
+        <h2 class="text-center col-12 o-margin--t--2">Защо избраха нас  </h2>
+        <h4>{{ project.information }}</h4>
     </div>
     <div class="col-11 p-0 m-0 mx-auto justify-content-center o-margin--t--2 row">
-        <h3 class="col-12 text-center">Направени промени</h3>
+        <h2 class="col-12 text-center">Направени промени</h2>
 
         {% for change in project.changes|split(',') %}
-            <h5 class="col-12 col-md-6 col-lg-3 mx-auto text-center  row text-md-center"> <i class="fas fa-check mr-4  " style="color: #BB0504"> </i>{{ change }} </h5>
+            <h4 class="col-12 col-md-6 col-lg-3 mx-auto text-center  row text-md-center"> <i class="fas fa-check mr-4  " style="color: #BB0504"> </i>{{ change }} </h4>
         {% endfor %}
     </div>
 

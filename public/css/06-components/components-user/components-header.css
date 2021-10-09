@@ -26,6 +26,7 @@
   color: black;
 }
 .c-header__image-container {
+  max-height: 30em;
   padding: 0;
   margin: 0;
 }

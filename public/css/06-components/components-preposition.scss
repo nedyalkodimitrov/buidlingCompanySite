@@ -24,8 +24,13 @@
             padding-left:4em;
             &__item{
                 margin-top: 0.5em;
-                font-size:1.333rem;
-                font-weight:bold; 
+                font-size: 1rem;
+                font-weight:bold;
+                h4{
+                    font-weight: bold;
+                    font-style: italic;
+                }
+
             }
         }
     }
