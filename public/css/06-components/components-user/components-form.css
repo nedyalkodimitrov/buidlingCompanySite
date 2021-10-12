@@ -1,7 +1,37 @@
 .c-form {
+  position: relative;
   width: 100%;
   padding-top: 2em;
   padding-bottom: 2em;
+}
+.c-form .c-form__backgroundImage {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  object-fit: fill;
+  width: 100%;
+}
+@media (max-width: 599px) {
+  .c-form .c-form__backgroundImage {
+    object-fit: cover;
+  }
+}
+@media (min-width: 600px) {
+  .c-form .c-form__backgroundImage {
+    font-size: 1.14em;
+  }
+}
+@media (min-width: 900px) {
+  .c-form .c-form__backgroundImage {
+    font-size: 1.2em;
+  }
+}
+@media (min-width: 1200px) {
+  .c-form .c-form__backgroundImage {
+    font-size: 1.25em;
+  }
 }
 .c-form__text {
   color: black;

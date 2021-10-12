@@ -27,20 +27,25 @@
 
     <div class="col-11 col-md-8 mx-auto  row">
         <div class="col-12 col-md-6 o-margin--t--2">
-            <h3 class="text-center">Свържете се с нас<h3>
-            <h5 class="mt-3 text-justify">Ако имате интерес към нас, се свържете с нас посредством посечения телефонен номер или формата за запитваниея.</h5>
+            <h2 class="text-center">Свържете се с нас<h3>
+            <h4 class="mt-3 text-justify">Ако имате интерес към нас, се свържете с нас посредством посечения телефонен номер или формата за запитваниея.</h4>
         </div>
         <div class=" col-12  col-md-6 p-0  o-margin--t--2">
-            <h3 class="text-center">Контакти<h3>
+            <h2 class="text-center">Контакти</h2>
             <div class="col-12 mt-3 text-justify">
-                <div class=" p-0 "><h5><i class="fas fa-map-marker-alt mr-2"></i>Център , Разград </h5></div>
-                <div class=" p-0 "><h5><i class="fas fa-phone-alt mr-2"></i>089 456 5896</h5></div>
-                <div class=" p-0 "><h5><i class="fas fa-envelope mr-2"></i>email@gmail.com </h5></div>
+                <div class=" p-0 "><h4><i class="fas fa-map-marker-alt mr-2"></i>Център , Разград </h4></div>
+                <div class=" p-0 "><h4><i class="fas fa-phone-alt mr-2"></i>089 456 5896</h4></div>
+                <div class=" p-0 "><h4><i class="fas fa-envelope mr-2"></i>email@gmail.com </h4></div>
             </div>
         </div>
+        <div class="col-12 o-margin--t--2">
+            <div class="col-12 mx-auto text-center c-form__text"><h2>Къде да ни намерите</h2></div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13465.624352260342!2d26.517487738911743!3d43.52767233481306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40af0e9cf69c6a93%3A0xe77b1d05d6d26087!2z0KDQsNC30LPRgNCw0LQ!5e0!3m2!1sbg!2sbg!4v1633780604888!5m2!1sbg!2sbg" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
         <div class="c-form col-12 mx-0 p-0 o-margin--t--2">
             {{ form_start(form) }}
-            <div class="col-12 mx-auto text-center c-form__text"><h3>Свържете се с нас </h3></div>
+            <div class="col-12 mx-auto text-center c-form__text"><h2>Свържете се с нас </h2></div>
             {{ form_widget(form.senderName, {'attr': {'class': 'c-form__input', 'placeholder' : 'Вашето име е'}}) }}
             {{ form_widget(form.senderEmail, {'attr': {'class': 'c-form__input', 'placeholder' : 'Вашият емейл е'}}) }}
             {{ form_widget(form.senderPhone, {'attr': {'class': 'c-form__input', 'placeholder' : 'Вашият телефон е'}}) }}
@@ -52,6 +57,6 @@
          </div>
         
     </div>
-    
+
 
 {% endblock %}

@@ -1,8 +1,32 @@
+@import "../../02-tools/tools-breakpoints";
+
 .c-form {
-   
+    position: relative;
     width:100%;
     padding-top: 2em;
     padding-bottom: 2em;
+    .c-form__backgroundImage{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 100%;
+        object-fit: fill;
+        width: 100%;
+
+        @include for-phone-only {
+            object-fit: cover;
+        }
+        @include for-tablet-portrait-up {
+            font-size: 1.140em;
+        }
+        @include for-tablet-landscape-up {
+            font-size: 1.20em ;
+        }
+        @include for-desktop-up {
+            font-size: 1.25em ;
+        }
+    }
     &__text{
         color: black;
         margin-bottom: 2em;

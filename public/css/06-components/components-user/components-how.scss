@@ -4,20 +4,20 @@
     //padding-bottom: 2rem;
     overflow:hidden;
 
-    &:before {       
-        content:" ";
-        position: absolute;
-        top: 0; left: 0; bottom: 0; right: 0;
-        background:rgba(0, 0, 0, 0.6);
-        z-index: 1;
-    }
+    //&:before {
+    //    content:" ";
+    //    position: absolute;
+    //    top: 0; left: 0; bottom: 0; right: 0;
+    //    background:rgba(0, 0, 0, 0.6);
+    //    z-index: 1;
+    //}
     &__coverPhoto{
         object-fit: cover;
         position: absolute;
         top: 0; left: 0; bottom: 0; right: 0;
         height: 100%;
         width: 100%;
-        filter: blur(5px);
+        //filter: blur(5px);
     }
     &__text {
         position: relative;
