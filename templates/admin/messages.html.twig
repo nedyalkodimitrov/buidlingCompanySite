@@ -28,8 +28,8 @@
             {% for message in messages %}
                 <div class="col-12 c-message-sidebar__element row justify-content-between mx-auto align-center">
                     <input type="hidden" value="{{ message.id }}" class="messageId">
-                    <h5>{{ message.senderName }} </h5>
-                    <h5>{{ message.sendedDate }}</h5>
+                    <h4>{{ message.senderName }} </h4>
+                    <h4>{{ message.sendedDate }}</h4>
                 </div>
             {% endfor %}
         </div>
@@ -58,11 +58,11 @@
             var message =  ajaxRequest('POST', '/admin/getMessage', data);
             console.log(message);
 
-            var messageConstruction = "  <h3 class=\"text-center p-2\">"+ message.senderName +"</h3>\n" +
-                "                        <h5>"+ message.senderMessage +"</h5>\n" +
+            var messageConstruction = "  <h2 class=\"text-center p-2\">"+ message.senderName +"</h2>\n" +
+                "                        <h4>"+ message.senderMessage +"</h4>\n" +
                 "                        <div class=\"col-12 text-center row pt-2 justify-content-between\">\n" +
-                "                           <h5 >Емайл адрес: "+ message.senderEmail +"</h5>\n" +
-                "                           <h5>Телефонен номер: "+ message.senderPhone +"</h5>\n" +
+                "                           <h4 >Емайл адрес: "+ message.senderEmail +"</h4>\n" +
+                "                           <h4>Телефонен номер: "+ message.senderPhone +"</h4>\n" +
                 "                       </div>\n" +
                 "                       <button class=\"btn btn-danger col-12 my-2 c-message__deleteMessage\" onclick=deleteMessage("+ message.id +")>Изтриване на съобщението</button>"
 

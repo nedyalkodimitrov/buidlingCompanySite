@@ -10,10 +10,10 @@
 
 {% block body %}
     
-    <div class="col-11 mx-auto row mt-4">
+    <div class="col-11 mx-auto row mt-4 mb-4">
 
         {% for type in projectTypes %}
-            <div class="col-12 text-center mt-4 mb-2"><h3>{{ type }}</h3></div>
+            <div class="col-12 text-center mt-4 mb-2"><h2>{{ type }}</h2></div>
             <hr class="col-9 mx-auto">
 
             {% set projectCointer = 0 %}
@@ -26,7 +26,7 @@
                                <div class="c-card__image-container">
                                    <img src="{{ project[2] }}" class="c-card__image-container__image" alt="">
                                    <div class="c-card__image-container__location">
-                                       <h6>{{project[3] }} </h6>
+                                       <h4>{{project[3] }} </h4>
                                    </div>
                                </div>
                            </a>
@@ -39,7 +39,7 @@
             {% endfor %}
 
             {% if projectCointer == 0 %}
-                <div class="col-12 text-center"><h5>Нямате добавени проекти</h5></div>
+                <div class="col-12 text-center"><h4>Нямате добавени проекти</h4></div>
             {% endif %}
 
         {% endfor %}

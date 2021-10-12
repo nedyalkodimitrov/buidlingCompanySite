@@ -4,6 +4,8 @@
     <link href="{{asset("css/06-components/components-user-project-header.css")}}" rel="stylesheet">
     <link href="{{asset("css/06-components/components-card.css")}}" rel="stylesheet">
     <link href="{{asset("css/06-components/components-user/components-employee-card.css")}}" rel="stylesheet">
+    <link href="{{asset("css/06-components/components-user/components-how.css")}}" rel="stylesheet">
+    <link href="{{asset("css/06-components/components-user/components-mirror-elements.css")}}" rel="stylesheet">
 {% endblock %}
 
 {% block javascripts %}
@@ -16,8 +18,8 @@
         <div class="c-user-project-header__information-container">
             <div class="c-user-project-header__information-container__text pt-2 pb-2 text-center">
                 <h1 class="text-center ">За нас </h1>
-                <hr class="col-2 mx-auto">
-                <h4 class="text-center o-margin--t--3">Спестете време</h4>
+
+                <h4 class="text-center o-margin--t--1">Спестете време</h4>
                 <button class="o-button o-button--red o-margin--t--1 col-2"><h4>Обадете се</h4></button>
             </div>
         </div>
@@ -27,15 +29,19 @@
     </header>
 
     <div class="col-11 mx-auto">
-        <div class="col-12 text-center o-margin--t--2"><h2>Защо да изберете нас</h2></div>
+        <div class="col-12 text-center o-margin--t--2"><h2>От къде започнахме</h2></div>
         <div>
-            <h4 class="text-justify o-margin--t--1  col-12 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pulvinar vel nunc quis sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean ut condimentum sapien, condimentum congue tortor. Nunc eu ligula ac dui aliquam molestie. Morbi.</h4>
+            <h4 class="text-justify o-margin--t--1  col-12 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a lectus eget leo volutpat commodo nec ac nulla. Proin tincidunt felis sapien, a rutrum purus consectetur vel. Sed cursus lectus nunc. Morbi vel laoreet nibh. Aliquam dictum, nisi ut molestie sollicitudin, mi lectus dignissim sapien, vitae tempus purus nibh id urna. Quisque commodo auctor diam et porttitor. Mauris efficitur quis nibh at egestas. Quisque rutrum cursus lectus in tempor. In tristique sem ut tempor faucibus. Suspendisse sodales mauris eros, et semper massa mattis a. Donec eu malesuada nisi. Morbi a dui interdum, vulputate purus at, cursus nunc. Suspendisse molestie justo sed eleifend tincidunt.
+                <br>
+                Ut condimentum magna vitae arcu tempus mattis. In vel metus dolor. Aenean aliquam felis a quam tempus, quis sollicitudin tortor placerat. Praesent nec congue augue. Nullam id porta velit, vel commodo quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed id nisl sagittis, vestibulum dui sit amet, dapibus nisi.
+
+            </h4>
         </div>
     </div>
 
 
 
-    <div class="col-11 mx-auto row p-0 mx-0  o-margin--b--5   ">
+    <div class="col-11 mx-auto row p-0 mx-0  o-margin--b--2   ">
        <h2 class="col-12 text-center o-margin--t--2">Кой сме ние</h2>
         <div class="c-employee-card col-12 col-md-6 col-lg-4 mt-4 p-0 m-0">
             <div class="c-employee-card__image col-12">
@@ -102,9 +108,52 @@
 {#            </div>#}
 {#        </div>#}
    </div>
+    <div class="c-how c-how--eclipse col-12 p-0 m-0">
+        <img src="{{asset("images/mauntain.jpg")}}" class="c-how__coverPhoto" alt="">
 
-    <div class="col-11 mx-auto">
-            <div class="col-6"><h2>За нас качеството е от първоначална необходимост</h2></div>
+        <div class="c-how__text col-12 col-md-11 row pb-4 pt-4">
+            <div class="col-12 text-center o-margin--b--2"><h2 class="mt-3 mb-3">За нас в цифри </h2></div>
+            <div class="col-12 col-lg-4 text-center justify-content-center">
+                <h3>50</h3>
+                <h4>завършени проекта</h4>
+            </div>
+            <div class="col-12 col-lg-4 text-center justify-content-center">
+                <h3>10</h3>
+                <h4>години качество </h4>
+            </div>
+            <div class="col-12 col-lg-4 text-center justify-content-center">
+                <h3>100%</h3>
+                <h4>спестено главоболие</h4>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <div class="col-11 mx-auto c-mirror-elements">
+        <div class="c-mirror-elements__element col-12 row justify-content-between mt-5 mb-2">
+            <div class="col-12 col-md-6 col-lg-4">
+                <img src="{{asset("images/bulb.jpg")}}" class="c-mirror-elements__element__img " alt="">
+            </div>
+            <div class="col-12 col-md-6 col-lg-7 mt-2 m-md-0 p-0 ">
+                <h2>Мисия</h2>
+                <h4>Нашата мисия е да помагаме на хората, като им предоставяме сигурност, спестено време и спестени нерви. Ние вярваме, че всеки има право да живее в хубав и качествено направен дом.</h4>
+                <h4>Ние знаем, че стените не правят дом, но няма как да има дом без стени. За нас качеството е от изключително големо значение. Понеже качеството зависи от хората ние се държим с нашите служители и с нашите клиенти като семейство. Понеже когато всички се разбираме качеството се подобрява</h4>
+            </div>
+        </div>
+        <div class="c-mirror-elements__element col-12 row justify-content-between mt-2 mt-md-5 mb-2">
+            <div class="col-12 col-md-6 col-lg-7 p-0">
+                <h2>Дарения</h2>
+                <h4>Ние даряваме 10% от нашите годишни приходи на дежа, които имат нужда от помощ. Те са хората, които ще помогнат на странта. Затова първо ние трябва да им помогнем </h4>
+                <h4>Ние знаем, че стените не правят дом, но няма как да има дом без стени. За нас качеството е от изключително големо значение. Понеже качеството зависи от хората ние се държим с нашите служители и с нашите клиенти като семейство. Понеже когато всички се разбираме качеството се подобрява</h4>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <img src="{{asset("images/child.jpg")}}" class="c-mirror-elements__element__img " alt="">
+            </div>
+
+        </div>
     </div>
 
 

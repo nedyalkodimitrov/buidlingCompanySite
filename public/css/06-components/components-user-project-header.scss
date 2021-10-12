@@ -16,6 +16,15 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 100%;
+
+      hr{
+        background: white;
+      }
+
+      button{
+        min-width: 9em;
+      }
+
     }
   }
 

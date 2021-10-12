@@ -14,12 +14,12 @@
 
 {% block body %}
     <div class="col-12 u-admin-intro p-0 m-0 justify-content-center row">
-        <h3 class="text-center col-12 m-0 u-admin-intro__text">{{ project.location }} | {{ project.projectType }} | Период:
+        <h2 class="text-center col-12 m-0 u-admin-intro__text">{{ project.location }} | {{ project.projectType }} | Период:
            {{ project.startDate }} -  {{ project.endDate }}
-        </h3>
+        </h2>
     </div>
     <div class="c-project-images">
-        <h3 class="text-center col-12 o-margin--t--4">Начална снимка </h3>
+        <h2 class="text-center col-12 o-margin--t--4">Начална снимка </h2>
         <div class="c-project-images__profileImage-holder">
             {% if project.defaultImage %}
                 <img src="{{ asset('projects/'~profileImage) }}" alt="" id="profileImage">
@@ -34,7 +34,7 @@
         </div>
 
         <div class="c-project-images__addImages-holder justify-content-center col-11 p-0 mx-auto row">
-            <h3 class="text-center col-12 o-margin--t--2">Снимките на вашият обект  </h3>
+            <h2 class="text-center col-12 o-margin--t--2">Снимките на вашият обект  </h2>
             {% for image in images %}
                 <div class="col-11 col-md-6 col-lg-4 p-0 o-margin--t--2" id="{{ image[0] }}">
                     <div class="c-project-images__addImages-holder__image-holder col-11 mx-auto">
@@ -57,17 +57,17 @@
     </div>
 
     <div class="c-textarea-container col-11 o-margin--t--4 mx-auto">
-        <h3 class="col-12 text-center o-margin--b--1 ">Дайте информация относно обекта</h3>
+        <h2 class="col-12 text-center o-margin--b--1 ">Дайте информация относно обекта</h2>
         <textarea name="" id="information" >{{ project.information }}</textarea>
     </div>
 
     <div class="c-textarea-container o-margin--t--4 col-11 mx-auto">
-        <h3 class="col-12 text-center ">Какви промени сте направили по обекта</h3>
-        <h5 class="col-12 text-center o-margin--b--1">Разделете промените със интервал или запетая</h5>
+        <h2 class="col-12 text-center ">Какви промени сте направили по обекта</h2>
+        <h4 class="col-12 text-center o-margin--b--1">Разделете промените със интервал или запетая</h4>
         <textarea name="" id="changes" > {{ project.changes }}</textarea>
     </div>
 
-    <div class="c-admin-project-buttons row col-11 mx-auto o-margin--t--4">
+    <div class="c-admin-project-buttons row col-11 mx-auto o-margin--t--4 mb-4" >
         <div class="col-6 p-1">
             <button class="col-12 btn btn-secondary p-1" id="removeChanges">Отмяна на промените</button>
 

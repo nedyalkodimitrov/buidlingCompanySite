@@ -20,6 +20,12 @@
   transform: translate(-50%, -50%);
   width: 100%;
 }
+.c-user-project-header__information-container__text hr {
+  background: white;
+}
+.c-user-project-header__information-container__text button {
+  min-width: 9em;
+}
 .c-user-project-header__image-container {
   position: absolute;
   top: 0;
