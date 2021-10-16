@@ -24,6 +24,8 @@
   padding-left: 4em;
 }
 .c-preposition__text-container__itemList__item {
+  list-style-type: circle;
+  list-style: disc;
   margin-top: 0.5em;
   font-size: 1rem;
   font-weight: bold;
